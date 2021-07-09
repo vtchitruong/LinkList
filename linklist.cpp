@@ -51,6 +51,8 @@ void free_singly_linked_list(SinglyLinkedListNode* node) {
     }
 }
 
+//------------------------------------------------------
+// Output the list
 void printLinkedList(SinglyLinkedListNode* head)
 {
     cout << "\nOutput the singly linked list:\n";
@@ -60,12 +62,32 @@ void printLinkedList(SinglyLinkedListNode* head)
     }
 }
 
+//-----------------------------------------------------------
+// Insert a node at the tail
+SinglyLinkedListNode* insertNodeAtTail(SinglyLinkedListNode* head, int data)
+{
+    SinglyLinkedListNode* newNode = new SinglyLinkedListNode(data);    
 
+    SinglyLinkedListNode *p;
+    for (p = head; p->next != NULL; p = p->next);
+    p->next = newNode;
+    return head;   
+}
+
+//-----------------------------------------------------------
+// Insert a node at the head
+SinglyLinkedListNode* insertNodeAtHead(SinglyLinkedListNode* head, int data)
+{
+    SinglyLinkedListNode *newNode = new SinglyLinkedListNode(data);
+    
+    newNode->next = head;
+    head = newNode;
+    return head;
+}
 
 
 bool compare_lists(SinglyLinkedListNode* head1, SinglyLinkedListNode* head2) {
-    bool res = true;
-    
+    bool res = true;    
     
     while (head1 != nullptr && head2 != nullptr)
     {
