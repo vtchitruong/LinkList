@@ -189,6 +189,27 @@ SinglyLinkedListNode* mergeLists(SinglyLinkedListNode* head1, SinglyLinkedListNo
     }  
 }
 
+//---------------------------------------------------------------------------------
+// Get a node value at a specific position, in which the tail is at position 0, its parent is at 1 and so on.
+int getNode(SinglyLinkedListNode* head, int positionFromTail)
+{
+    SinglyLinkedListNode *lead = head;
+    SinglyLinkedListNode *follow = head;
+    
+    int distance = 0;
+    while (lead != nullptr)
+    {
+        lead = lead->next;
+        
+        if (distance++ > positionFromTail)
+        {
+            follow = follow->next;            
+        }
+    }
+    return follow->data; 
+}
+
+//---------------------------------------------------------------------------------
 int main()
 {
     SinglyLinkedList* llist = new SinglyLinkedList();
