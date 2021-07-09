@@ -161,6 +161,34 @@ bool compare_lists(SinglyLinkedListNode* head1, SinglyLinkedListNode* head2) {
     return head1 == head2;
 }
 
+//--------------------------------------------------------------------------
+// Merge 2 sorted lists into a single ascending-sorted list
+SinglyLinkedListNode* mergeLists(SinglyLinkedListNode* head1, SinglyLinkedListNode* head2)
+{
+    if (head1 == nullptr)
+    {
+        return head2;
+    }
+    else
+    {
+        if (head2 == nullptr)
+        {
+            return head1;
+        }
+    }
+    
+    if (head1->data < head2->data)
+    {
+        head1->next = mergeLists(head1->next, head2);
+        return head1;
+    }
+    else
+    {
+        head2->next = mergeLists(head1, head2->next);
+        return head2;
+    }  
+}
+
 int main()
 {
     SinglyLinkedList* llist = new SinglyLinkedList();
