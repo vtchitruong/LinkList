@@ -55,12 +55,25 @@ void free_singly_linked_list(SinglyLinkedListNode* node) {
 // Output the list
 void printLinkedList(SinglyLinkedListNode* head)
 {
-    cout << "\nOutput the singly linked list:\n";
+    cout << "Output the singly linked list:\n";
     for (SinglyLinkedListNode *p = head; p; p = p->next)
     {
         cout << p->data << "->";
     }
 }
+
+//--------------------------------------------------------
+// Output the list in reversed order
+void reversePrint(SinglyLinkedListNode* head)
+{
+    cout << "Output the singly linked list in reversed order:\n";
+    if (head != nullptr)
+    {
+        reversePrint(head->next);
+        cout << head->data << "->";
+    }
+}
+
 
 //-----------------------------------------------------------
 // Insert a node at the tail
@@ -85,21 +98,67 @@ SinglyLinkedListNode* insertNodeAtHead(SinglyLinkedListNode* head, int data)
     return head;
 }
 
+//-----------------------------------------------------------
+// Insert a node at ad specific position
+SinglyLinkedListNode* insertNodeAtPosition(SinglyLinkedListNode* head, int data, int position)
+{
+    SinglyLinkedListNode *newNode = new SinglyLinkedListNode(data);
+    
+    if (head == NULL)
+    {
+        head = newNode;
+    }
+    else {
+        SinglyLinkedListNode *p = head;
+        for (int i = 0; i < position - 1; ++i)
+        {
+            p = p->next;
+        }
+        
+        newNode->next = p->next;
+        p->next = newNode;
+    }
+    return head;    
+}
+
+//-----------------------------------------------------------
+// Delete a node at a specific position
+SinglyLinkedListNode* deleteNode(SinglyLinkedListNode* head, int position) {
+    if (head != nullptr)
+    {
+        if (position == 0)
+        {
+            SinglyLinkedListNode *tmpNode = head;
+            head = head->next;
+            free(tmpNode);
+        }
+        else {
+            SinglyLinkedListNode *p = head;
+            for (int i = 1; i < position; ++i)
+            {
+                p = p->next;
+            }
+            
+            SinglyLinkedListNode *tmpNode = p->next;
+            p->next = tmpNode->next;
+            free(tmpNode);
+        }        
+    }    
+    return head;
+}
+
+//-----------------------------------------------------------
+// Compare 2 lists
+// Equal: the same length and all data are equal
 
 bool compare_lists(SinglyLinkedListNode* head1, SinglyLinkedListNode* head2) {
-    bool res = true;    
-    
-    while (head1 != nullptr && head2 != nullptr)
-    {
-        if (head1 == nullptr || head2 == nullptr || head1->data != head2->data)
-        {
-            return false;
-        }
-            
+   
+    while (head1 != nullptr && head2 != nullptr && head1->data == head2->data)
+    {            
         head1 = head1->next;
         head2 = head2->next;            
     }
-    return res;
+    return head1 == head2;
 }
 
 int main()
