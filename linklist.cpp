@@ -74,7 +74,6 @@ void reversePrint(SinglyLinkedListNode* head)
     }
 }
 
-
 //-----------------------------------------------------------
 // Insert a node at the tail
 SinglyLinkedListNode* insertNodeAtTail(SinglyLinkedListNode* head, int data)
@@ -150,7 +149,6 @@ SinglyLinkedListNode* deleteNode(SinglyLinkedListNode* head, int position) {
 //-----------------------------------------------------------
 // Compare 2 lists
 // Equal: the same length and all data are equal
-
 bool compare_lists(SinglyLinkedListNode* head1, SinglyLinkedListNode* head2) {
    
     while (head1 != nullptr && head2 != nullptr && head1->data == head2->data)
@@ -208,6 +206,48 @@ int getNode(SinglyLinkedListNode* head, int positionFromTail)
     }
     return follow->data; 
 }
+
+
+//----------------------------------------------------------------------------------
+// If the lists share a common node, return that node's data value.
+/*
+[List #1] a--->b--->c
+                     \
+                      x--->y--->z--->NULL
+                     /
+     [List #2] p--->q
+*/
+
+int findMergeNode(SinglyLinkedListNode* head1, SinglyLinkedListNode* head2)
+{   
+    SinglyLinkedListNode *pa= head1;
+    SinglyLinkedListNode *pb = head2;
+    
+    while (pa != pb)
+    {
+        if (pa->next == nullptr)
+        {
+            pa = head2;
+        }
+        else
+        {
+            pa = pa->next;
+        }
+        
+        if (pb->next == nullptr)
+        {
+            pb = head1;
+        }
+        else
+        {
+            pb = pb->next;
+        }
+        
+    }
+    
+    return pa->data;
+}
+
 
 //---------------------------------------------------------------------------------
 int main()
