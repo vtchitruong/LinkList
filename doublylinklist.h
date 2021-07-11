@@ -26,3 +26,6 @@ public:
 void print_doubly_linked_list(DoublyLinkedListNode* node, string sep, ofstream& fout);
 void free_doubly_linked_list(DoublyLinkedListNode* node);
 DoublyLinkedListNode* sortedInsert(DoublyLinkedListNode* head, int data);
+
+// reverse the doubly-linked list
+DoublyLinkedListNode* reverse(DoublyLinkedListNode* head);

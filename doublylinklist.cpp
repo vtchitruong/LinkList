@@ -101,3 +101,29 @@ DoublyLinkedListNode* sortedInsert(DoublyLinkedListNode* head, int data)
         }
     return head;
 }
+
+//--------------------------------------------------------------------
+// reverse the doubly-linked list
+DoublyLinkedListNode* reverse(DoublyLinkedListNode* head)
+{
+    DoublyLinkedListNode *newHead;    
+    DoublyLinkedListNode *p1 = head;
+    
+    while (p1 != nullptr)
+    {
+        // init
+        DoublyLinkedListNode *p2 = p1->prev;
+        
+        // modify p1
+        p1->prev = p1->next;
+        p1->next = p2;        
+        
+        // set newHead;
+        newHead = p1;
+        
+        // go on
+        p1 = p1->prev;
+    }
+    
+    return newHead;
+}
