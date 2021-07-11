@@ -1,2 +1,2 @@
 # LinkList
-Data structure sample of link list in C++
+Data structure sample of linked list in C++
