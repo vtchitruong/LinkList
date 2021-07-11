@@ -62,3 +62,6 @@ int getNode(SinglyLinkedListNode* head, int positionFromTail);
      [List #2] p--->q
 */
 int findMergeNode(SinglyLinkedListNode* head1, SinglyLinkedListNode* head2);
+
+// delete duplicate-value nodes from a sorted linked list
+SinglyLinkedListNode* removeDuplicates(SinglyLinkedListNode* head);
