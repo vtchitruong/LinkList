@@ -65,3 +65,9 @@ int findMergeNode(SinglyLinkedListNode* head1, SinglyLinkedListNode* head2);
 
 // delete duplicate-value nodes from a sorted linked list
 SinglyLinkedListNode* removeDuplicates(SinglyLinkedListNode* head);
+
+
+// cycle detection
+// 1->2->3->null --> Output: 0, means no cycle
+// 1->2->3->1->null --> Output: 1, means a cycle
+bool has_cycle(SinglyLinkedListNode* head);
