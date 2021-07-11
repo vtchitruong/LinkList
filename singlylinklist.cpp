@@ -244,3 +244,29 @@ int findMergeNode(SinglyLinkedListNode* head1, SinglyLinkedListNode* head2)
     
     return pa->data;
 }
+
+//----------------------------------------------------------------------
+// delete duplicate-value nodes from a sorted linked list
+
+SinglyLinkedListNode* removeDuplicates(SinglyLinkedListNode* head)
+{
+    SinglyLinkedListNode *currentNode = head;
+    SinglyLinkedListNode *followNode = currentNode->next;
+    
+    while (currentNode != nullptr)
+    {
+        while (followNode != nullptr && followNode->data == currentNode->data)
+        {
+            followNode = followNode->next;
+        }
+        
+        // skip duplicate nodes
+        currentNode->next = followNode;
+        
+        // jump to the node of new data
+        currentNode = followNode;
+    }
+    
+    return head;
+}
+
